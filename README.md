@@ -2,5 +2,5 @@
 ### BALAS VLAD-GEORGE
 
 Pana acum:
-    - setup
-    - citire fisiere + generare fisiere goale
+- setup
+- citire fisiere + generare fisiere goale
