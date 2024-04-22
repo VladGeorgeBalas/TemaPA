@@ -9,7 +9,7 @@
 #------------------------------------------------------------------------------
 
 # Exec name
-EXEC_NAME=lanParty
+
 
 # Teste Normale
 FILE_TEST_DATE_1="date/t%d/d.in"
@@ -58,7 +58,7 @@ function run_test {
 	done
 
 	# Okay, so this test will get $points if passed.
-	./$EXEC_NAME $2 $3 $4  2>&1 | cat
+	./$EXEC $2 $3 $4  2>&1 | cat
 	
 	diff -Z -q $4 $5 > /dev/null 2>&1
 	if [ $? -eq 0 ];
@@ -116,8 +116,7 @@ make
 
 # Run normal tests
 echo $DELIM
-echo "Executabil = '$EXEC_NAME'"
+echo "Executabil = '$EXEC'"
 
 run_normal_tests
 show_total
-

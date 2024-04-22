@@ -2,7 +2,10 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]){
-    //extrgere fisiere
+    
+
+
+    /*//extrgere fisiere
     FILE* file_cerinte = fopen(*(argv + 1), "r");
     FILE* file_date = fopen(*(argv + 2), "r");
     FILE* file_iesire = fopen(*(argv + 3), "w");
@@ -12,6 +15,5 @@ int main(int argc, char *argv[]){
     fclose(file_cerinte);
     fclose(file_date);
     fclose(file_iesire);
-
-    return 0;
+    */
 }
