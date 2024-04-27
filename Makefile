@@ -1,13 +1,14 @@
 CC=gcc
 EXEC=lanparty
-FILES=main.c ./libs/data/data.c ./libs/data/data.h ./comps/task1/task1.c
+FILES=main.c
+LIBS=./libs
 
 build: compile
 
 all: compile
 
 compile:
-	$(CC) $(FILES) -o $(EXEC)
+	$(CC) $(FILES) -L $(LIBS) -o $(EXEC)
 
 run:
 	./$(EXEC)

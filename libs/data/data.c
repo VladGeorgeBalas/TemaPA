@@ -23,6 +23,7 @@ struct player* newPlayer(char* _first_name, char* _last_name, int _points){
     return result;
 }
 
+
 struct player freePlayer(struct player* _player){
     struct player result;
 
