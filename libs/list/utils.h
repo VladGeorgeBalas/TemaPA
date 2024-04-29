@@ -15,10 +15,10 @@ void addAtPos(struct list_node* _list, struct list_node* _list_node);
 
 struct list_node* getPos(struct list_node* _list, unsigned int _pos);
 
-struct list_node* deleteAtBeginning(struct list_node* _list, struct list_node* _list_node);
+struct list_node deleteAtBeginning(struct list_node* _list, struct list_node* _list_node);
 
-struct list_node* deleteAtEnd(struct list_node* _list, struct list_node* _list_node);
+struct list_node deleteAtEnd(struct list_node* _list, struct list_node* _list_node);
 
-struct list_node* deleteAtPos(struct list_node* _list, struct list_node* _list_node);
+struct list_node deleteAtPos(struct list_node* _list, struct list_node* _list_node);
 
 #endif //UTILS_H
