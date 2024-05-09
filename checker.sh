@@ -9,7 +9,7 @@
 #------------------------------------------------------------------------------
 
 # Exec name
-
+EXEC="lanparty"
 
 # Teste Normale
 FILE_TEST_DATE_1="date/t%d/d.in"
