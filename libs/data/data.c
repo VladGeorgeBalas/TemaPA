@@ -45,13 +45,14 @@ struct team team(unsigned int _number, struct player* _members){
     return result;
 }
 
-struct team* newTeam(unsigned int _number, struct player* _members){
+struct team* newTeam(char* _name, unsigned int _number, struct player* _members){
     struct team* result = (struct team*)malloc(sizeof(struct team));
 
     if(!result) return NULL;
 
     result->members = _members;
     result->number = _number;
+    result->name = _name;
 
     return result;
 }
