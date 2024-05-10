@@ -69,11 +69,11 @@ extern struct list_node* task1(FILE* _fff_dta){
 
             mem->last_name = read(_fff_dta, 0, " \n");
             if(!mem->last_name) fprintf(stderr, "   Nu s-a putut aloca mem pt LN al membrului %d\n", j);
-            else fprintf(stderr, "  s-a alocat mem pt LN al membrului %d : %s\n", i, mem->last_name);
+            else fprintf(stderr, "  s-a alocat mem pt LN al membrului %d : %s\n", j, mem->last_name);
 
             mem->first_name = read(_fff_dta, 0, " \n");
             if(!mem->last_name) fprintf(stderr, "   Nu s-a putut aloca mem pt FN al membrului %d\n", j);
-            else fprintf(stderr, "  s-a alocat mem pt FN al membrului %d : %s\n", i, mem->first_name);
+            else fprintf(stderr, "  s-a alocat mem pt FN al membrului %d : %s\n", j, mem->first_name);
 
             char* tmp_mem_points = read(_fff_dta, 0, " \n");
             sscanf(tmp_mem_points, "%d", &(mem->points));
