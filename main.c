@@ -7,9 +7,20 @@
 extern struct list_node* task1(FILE* _fff_dta);
 
 int main(int argc, char *argv[]){
+    //desfacere input-uri
     FILE* fff_tsk = fopen(*(argv + 1), "r");
     FILE* fff_dta = fopen(*(argv + 2), "r");
     FILE* fff_out = fopen(*(argv + 3), "w");
 
+    task1:
     struct list_node* tsk_1_lst = task1(fff_dta);
+    //testare task1
+    struct list_node* tmp = tsk_1_lst->next;
+    while(tmp)
+    {
+        fprintf(fff_out, "%s\n", ((struct team*)tmp->value)->name);
+        tmp = tmp->next;
+    }
+
+    return 0;
 }

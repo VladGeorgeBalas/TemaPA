@@ -20,7 +20,7 @@ task1:
 EXEC=lanparty
 FILES=$(MAIN_OUT) $(TASK1_OUT)
 
-compile: #main task1
+compile: main task1
 	$(CC) $(FILES) $(LIBS) -o $(EXEC)
 	rm -f $(FILES)
 
