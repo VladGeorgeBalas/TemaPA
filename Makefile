@@ -17,10 +17,15 @@ TASK1_OUT=task1.o
 task1:
 	$(CC) -c $(TASK1_FILES) -o $(TASK1_OUT)
 
-EXEC=lanparty
-FILES=$(MAIN_OUT) $(TASK1_OUT)
+TASK2_FILES=./comps/task2/task2.c
+TASK2_OUT=task2.o
+task2:
+	$(CC) -c $(TASK2_FILES) -o $(TASK2_OUT)
 
-compile: main task1
+EXEC=lanparty
+FILES=$(MAIN_OUT) $(TASK1_OUT) $(TASK2_OUT)
+
+compile: main task1 task2
 	$(CC) $(FILES) $(LIBS) -o $(EXEC)
 	rm -f $(FILES)
 
