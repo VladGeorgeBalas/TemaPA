@@ -52,4 +52,22 @@ struct list_node deleteAtEnd(struct list_node* _list, struct list_node* _list_no
 
 }
 
+void *extractNode(struct list_node *_to_extract, struct list_node* _head) {
+    struct list_node* tmp = _head->next;
+    struct list_node* pre_tmp = _head;
+
+    while(!tmp || tmp!= _to_extract)
+    {
+        tmp = tmp->next;
+        pre_tmp = pre_tmp->next;
+    }
+
+    if(tmp){
+        pre_tmp->next = tmp->next;
+        return tmp;
+    }
+
+    return NULL;
+}
+
 struct list_node deleteAtPos(struct list_node* _list, struct list_node* _list_node);

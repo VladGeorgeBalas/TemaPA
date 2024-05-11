@@ -16,11 +16,12 @@ int main(int argc, char *argv[]){
     task1:
     struct list_node* tsk_1_lst = task1(fff_dta);
     //testare task1
-    struct list_node* tmp = tsk_1_lst->next;
-    while(tmp)
     {
-        fprintf(fff_out, "%s\n", ((struct team*)tmp->value)->name);
-        tmp = tmp->next;
+        struct list_node *tmp = tsk_1_lst->next;
+        while (tmp) {
+            fprintf(fff_out, "%s . \n", ((struct team *) tmp->value)->name);
+            tmp = tmp->next;
+        }
     }
 
     task2(tsk_1_lst);

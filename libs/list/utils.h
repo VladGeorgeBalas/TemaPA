@@ -9,6 +9,8 @@
 
 void addAtBeginning(struct list_node* _list, struct list_node* _list_node);
 
+void* extractNode(struct list_node* _to_extract, struct list_node* _head);
+
 void addAtEnd(struct list_node* _list, struct list_node* _list_node);
 
 void addAtPos(struct list_node* _list, struct list_node* _list_node);
