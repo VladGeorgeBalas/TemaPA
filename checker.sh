@@ -58,7 +58,7 @@ function run_test {
 	done
 
 	# Okay, so this test will get $points if passed.
-	./$EXEC $2 $3 $4  2>&1 | cat
+	./$EXEC $2 $3 $4  2>err.out | cat
 	
 	diff -Z -q $4 $5 > /dev/null 2>&1
 	if [ $? -eq 0 ];

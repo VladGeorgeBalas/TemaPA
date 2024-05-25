@@ -11,7 +11,7 @@ extern float tem_pts(struct team *_tem) {
         result += (_tem->members + i)->points;
     }
 
-    return result;
+    return result / (float)(_tem->number);
 }
 
 int max_pow_two(int upp_lim) {
@@ -23,7 +23,7 @@ int max_pow_two(int upp_lim) {
     return result;
 }
 
-void deleteList_node(struct list_node* del, struct list_node* lst_hed)
+extern void deleteList_node(struct list_node* del, struct list_node* lst_hed)
 {
     struct list_node* tmp = lst_hed->next;
     struct list_node* pre_tmp = lst_hed;
@@ -73,9 +73,9 @@ extern void task2(struct list_node *_hed_lst) {
 
         fprintf(stderr, "   to delete --> %s : %f \n", del_val->name, tem_pts(del_val));
 
-        while (tmp->next) {
+        while (tmp) {
             fprintf(stderr, "%s : %f \n", tmp_val->name, tem_pts(tmp_val));
-            if (tem_pts(tmp_val) < tem_pts(del_val)) {
+            if (tem_pts(tmp_val)/tmp_val->number < tem_pts(del_val)/del_val->number) {
                 del = tmp;
                 fprintf(stderr, "   to delete --> %s : %f \n", del_val->name, tem_pts(del_val));
             }
