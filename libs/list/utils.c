@@ -1,6 +1,10 @@
 #include "utils.h"
 #include <stdlib.h>
 
+int emp(struct list_node *lst_hed) {
+    return !!(lst_hed->next);
+}
+
 void addAtBeginning(struct list_node* _list, struct list_node* _list_node){
     _list_node->next = _list->next;
     _list->next = _list_node;

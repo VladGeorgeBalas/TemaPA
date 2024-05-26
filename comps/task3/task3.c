@@ -4,53 +4,9 @@
 #include "../../libs/data/data.h"
 #include "../../libs/list/list.h"
 #include "../../libs/list/utils.h"
-
-//Queue - FiFo
-typedef struct list_node *queue;
-
-void en_que(queue que_hed, struct list_node *to_que) {
-    //gaseste finalul
-    struct list_node *tmp = que_hed;
-    while (tmp->next) tmp = tmp->next;
-
-    //adauga la final
-    tmp->next = to_que;
-    to_que->next = NULL;
-}
-
-struct list_node *de_que(struct list_node *que_hed) {
-    if (!que_hed->next)
-        return NULL;
-
-    struct list_node *result = que_hed->next;
-    que_hed->next = result->next;
-    result->next = NULL;
-
-    return result;
-}
-
-//Stack - LiFo
-typedef struct list_node *stack;
-
-void psh(struct list_node *stk_hed, struct list_node *to_psh) {
-    to_psh->next = stk_hed->next;
-    stk_hed->next = to_psh;
-}
-
-struct list_node *pop(struct list_node *que_hed) {
-    if (!que_hed->next)
-        return NULL;
-
-    struct list_node *result = que_hed->next;
-    que_hed->next = result->next;
-    result->next = NULL;
-
-    return result;
-}
-
-int emp(struct list_node *lst_hed) {
-    return !!(lst_hed->next);
-}
+#include "../../libs/list/queue.h"
+#include "../../libs/list/stack.h"
+#include "../../libs/list/queue.h"
 
 int numElem(struct list_node *hed) {
     struct list_node *tmp = hed->next;
@@ -99,7 +55,8 @@ void addPoint(struct list_node *nod) {
 
 struct {
     struct list_node *win, *lose;
-} hep_exe(struct list_node *que_hed) {
+}
+hep_exe(struct list_node *que_hed) {
 
     struct list_node *stk_los_hed = (struct list_node *) malloc(sizeof(struct list_node));
     stk_los_hed->next = NULL;
@@ -213,6 +170,8 @@ extern struct list_node *task3(struct list_node *_hed_lst, FILE *out) {
     struct list_node *lst_8 = malloc(sizeof(struct list_node));
     lst_8->next = NULL;
 
+    int j = i;
+
     for (; numElem(_hed_lst) > 1; i++) {
         struct list_node *hep_hed = hep_crt(_hed_lst);
         fprintf(out, "\n--- ROUND NO:%d\n", i);
@@ -226,11 +185,16 @@ extern struct list_node *task3(struct list_node *_hed_lst, FILE *out) {
         printWin(stk_win_hed, out);
 
 
-        struct list_node *tmp = stk_los_hed;
-        while (tmp->next) tmp = tmp->next;
+        struct list_node *tmp = stk_los_hed->next;
+        while (tmp->next) {
+            for(struct player* k = ((struct team*)tmp->value)->members; k < ((struct team*)tmp->value)->members +((struct team*)tmp->value)->number; k++)
+                k->points = k->points - i + j;
+            tmp = tmp->next;
+        }
+        for(struct player* k = ((struct team*)tmp->value)->members; k < ((struct team*)tmp->value)->members +((struct team*)tmp->value)->number; k++)
+            k->points = k->points - i + j;
         tmp->next = lst_8->next;
         lst_8->next = stk_los_hed->next;
-
 
         free(hep_hed);
         free(stk_los_hed);
@@ -238,6 +202,11 @@ extern struct list_node *task3(struct list_node *_hed_lst, FILE *out) {
         _hed_lst->next = stk_win_hed->next;
         free(stk_win_hed);
     }
+
+    _hed_lst->next->next = lst_8->next;
+    lst_8->next = _hed_lst->next;
+    for(struct player* k = ((struct team*)lst_8->next->value)->members; k < ((struct team*)lst_8->next->value)->members +((struct team*)lst_8->next->value)->number; k++)
+        k->points = k->points - i + j;
 
     return lst_8;
 }
