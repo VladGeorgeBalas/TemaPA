@@ -40,5 +40,9 @@ int main(int argc, char *argv[]){
     if(tsk[3]) lst_8 = task4(lst_8, fff_out);
 
     if(tsk[4]) task5(lst_8);
+
+    fclose(fff_out);
+    fclose(fff_tsk);
+    fclose(fff_dta);
     return 0;
 }
