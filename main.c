@@ -7,7 +7,8 @@
 struct list_node* task1(FILE* _fff_dta);
 void task2(struct list_node* _hed_lst);
 struct list_node* task3(struct list_node* _hed_lst, FILE* out);
-void task4(struct list_node *lst_8, FILE* out);
+struct list_node* task4(struct list_node *lst_8, FILE* out);
+void task5(struct list_node* lst);
 
 int main(int argc, char *argv[]){
     //desfacere input-uri
@@ -35,6 +36,9 @@ int main(int argc, char *argv[]){
     struct list_node* lst_8 = NULL;
     if(tsk[2]) lst_8 = task3(tsk_1_lst, fff_out);
 
-    if(tsk[3]) task4(lst_8, fff_out);
+
+    if(tsk[3]) lst_8 = task4(lst_8, fff_out);
+
+    if(tsk[4]) task5(lst_8);
     return 0;
 }

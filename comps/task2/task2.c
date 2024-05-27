@@ -37,7 +37,9 @@ extern void deleteList_node(struct list_node* del, struct list_node* lst_hed)
     if(tmp){
         pre_tmp->next = tmp->next;
 
-        for (struct player* i = ((struct team*)del->value)->members; i < ((struct team*)del->value)->members + ((struct team*)del->value)->number; i++) {
+        for (struct player* i = ((struct team*)del->value)->members;
+                i < ((struct team*)del->value)->members + ((struct team*)del->value)->number;
+                i++) {
             free(i->first_name);
             free(i->last_name);
         }

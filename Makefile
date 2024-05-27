@@ -4,7 +4,7 @@ build: compile
 all: compile run clean
 
 DATA=./libs/data/data.c
-LISTS=./libs/list/list.c ./libs/list/utils.c ./libs/list/stack.c ./libs/list/queue.c
+LISTS=./libs/list/list.c ./libs/list/utils.c ./libs/list/stack.c ./libs/list/queue.c ./libs/tree/tree.c
 LIBS=$(DATA) $(LISTS)
 
 MAIN_FILES=main.c
@@ -32,10 +32,15 @@ TASK4_OUT=task4.o
 task4:
 	$(CC) -c -g $(TASK4_FILES) -o $(TASK4_OUT)
 
-EXEC=lanparty
-FILES=$(MAIN_OUT) $(TASK1_OUT) $(TASK2_OUT) $(TASK3_OUT) $(TASK4_OUT)
+TASK5_FILES=./comps/task5/task5.c
+TASK5_OUT=task5.o
+task5:
+	$(CC) -c -g $(TASK5_FILES) -o $(TASK5_OUT)
 
-compile: main task1 task2 task3 task4
+EXEC=lanparty
+FILES=$(MAIN_OUT) $(TASK1_OUT) $(TASK2_OUT) $(TASK3_OUT) $(TASK4_OUT) $(TASK5_OUT)
+
+compile: main task1 task2 task3 task4 task5
 	$(CC) -g $(FILES) $(LIBS) -o $(EXEC)
 	rm -f $(FILES)
 

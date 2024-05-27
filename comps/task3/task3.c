@@ -144,8 +144,9 @@ void printWin(struct list_node *stk, FILE *out) {
     }
 }
 
-extern struct list_node *task3(struct list_node *_hed_lst, FILE *out) {
+int task3_half_1(struct list_node *_hed_lst, FILE *out) {
     int i = 1;
+
     for (; numElem(_hed_lst) > 8; i++) {
         struct list_node *hep_hed = hep_crt(_hed_lst);
         fprintf(out, "\n--- ROUND NO:%d\n", i);
@@ -167,11 +168,10 @@ extern struct list_node *task3(struct list_node *_hed_lst, FILE *out) {
         free(stk_win_hed);
     }
 
-    struct list_node *lst_8 = malloc(sizeof(struct list_node));
-    lst_8->next = NULL;
+    return i;
+}
 
-    int j = i;
-
+void task3_half_2(struct list_node *_hed_lst, FILE *out, int i, int j, struct list_node *lst_8) {
     for (; numElem(_hed_lst) > 1; i++) {
         struct list_node *hep_hed = hep_crt(_hed_lst);
         fprintf(out, "\n--- ROUND NO:%d\n", i);
@@ -184,14 +184,15 @@ extern struct list_node *task3(struct list_node *_hed_lst, FILE *out) {
         fprintf(out, "\nWINNERS OF ROUND NO:%d\n", i);
         printWin(stk_win_hed, out);
 
-
         struct list_node *tmp = stk_los_hed->next;
         while (tmp->next) {
-            for(struct player* k = ((struct team*)tmp->value)->members; k < ((struct team*)tmp->value)->members +((struct team*)tmp->value)->number; k++)
+            for (struct player *k = ((struct team *) tmp->value)->members;
+                 k < ((struct team *) tmp->value)->members + ((struct team *) tmp->value)->number; k++)
                 k->points = k->points - i + j;
             tmp = tmp->next;
         }
-        for(struct player* k = ((struct team*)tmp->value)->members; k < ((struct team*)tmp->value)->members +((struct team*)tmp->value)->number; k++)
+        for (struct player *k = ((struct team *) tmp->value)->members;
+             k < ((struct team *) tmp->value)->members + ((struct team *) tmp->value)->number; k++)
             k->points = k->points - i + j;
         tmp->next = lst_8->next;
         lst_8->next = stk_los_hed->next;
@@ -205,8 +206,21 @@ extern struct list_node *task3(struct list_node *_hed_lst, FILE *out) {
 
     _hed_lst->next->next = lst_8->next;
     lst_8->next = _hed_lst->next;
-    for(struct player* k = ((struct team*)lst_8->next->value)->members; k < ((struct team*)lst_8->next->value)->members +((struct team*)lst_8->next->value)->number; k++)
+    for (struct player *k = ((struct team *) lst_8->next->value)->members;
+         k < ((struct team *) lst_8->next->value)->members + ((struct team *) lst_8->next->value)->number; k++)
         k->points = k->points - i + j;
+
+}
+
+extern struct list_node *task3(struct list_node *_hed_lst, FILE *out) {
+    int i = task3_half_1(_hed_lst, out);
+
+    struct list_node *lst_8 = malloc(sizeof(struct list_node));
+    lst_8->next = NULL;
+
+    int j = i;
+
+    task3_half_2(_hed_lst, out, i, j, lst_8);
 
     return lst_8;
 }

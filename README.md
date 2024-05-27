@@ -1,9 +1,11 @@
 # Tema PA
-### BALAS VLAD-GEORGE
+### BALAS VLAD-GEORGE - 311AA
 
-### Cum functioneaza?
+Tema incearca sa simuleze desfasuarea unui
+LanPart(o competitie de jocuri video). Se citesc
+echipele si se adauga la o lista care apoi este
+transformata in meciuri, puse pe o coada. Ruland 
+meciurile se decid castigatorii si de asemenea ultimii
+opt finalisti sunt organizati si intr-un arbore binar.
 
-To-Do:
-- [x] setup
-- [x] citire fisiere + generare fisiere goale
 
